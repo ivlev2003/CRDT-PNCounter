@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="crdt.counters.PNCounterTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2023-04-29T16:42:34" hostname="DESKTOP-UO6D5Q3" time="0.075">
+  <properties/>
+  <testcase name="testConstructorWithInvalidValues()" classname="crdt.counters.PNCounterTest" time="0.039"/>
+  <testcase name="testGet()" classname="crdt.counters.PNCounterTest" time="0.008"/>
+  <testcase name="TestIncrementAndDecrement()" classname="crdt.counters.PNCounterTest" time="0.002"/>
+  <testcase name="testMerge()" classname="crdt.counters.PNCounterTest" time="0.009"/>
+  <testcase name="testCopy()" classname="crdt.counters.PNCounterTest" time="0.001"/>
+  <testcase name="testIncrement()" classname="crdt.counters.PNCounterTest" time="0.002"/>
+  <testcase name="testDecrement()" classname="crdt.counters.PNCounterTest" time="0.001"/>
+  <testcase name="testConstructor()" classname="crdt.counters.PNCounterTest" time="0.001"/>
+  <testcase name="testConcurency()" classname="crdt.counters.PNCounterTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
