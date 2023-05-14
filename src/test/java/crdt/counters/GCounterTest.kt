@@ -24,7 +24,7 @@ class GCounterTest {
     @Test
     fun testIncrementMethodForSingleInstance() {
         val gCounter = GCounter(0, 3)
-        gCounter.increment()
+        gCounter.inc()
         Assertions.assertEquals(1, gCounter.get())
     }
 
@@ -32,8 +32,8 @@ class GCounterTest {
     fun testIncrementMethodForMultipleInstances() {
         val gCounter1 = GCounter(0, 3)
         val gCounter2 = GCounter(1, 3)
-        gCounter1.increment()
-        gCounter2.increment()
+        gCounter1.inc()
+        gCounter2.inc()
         Assertions.assertEquals(1, gCounter1.get())
         Assertions.assertEquals(1, gCounter2.get())
     }
@@ -41,9 +41,9 @@ class GCounterTest {
     @Test
     fun testGetMethodForSingleInstance() {
         val gCounter = GCounter(0, 3)
-        gCounter.increment()
-        gCounter.increment()
-        gCounter.increment()
+        gCounter.inc()
+        gCounter.inc()
+        gCounter.inc()
         Assertions.assertEquals(3, gCounter.get())
     }
 
@@ -51,9 +51,9 @@ class GCounterTest {
     fun testGetMethodForMultipleInstances() {
         val gCounter1 = GCounter(0, 3)
         val gCounter2 = GCounter(1, 3)
-        gCounter1.increment()
-        gCounter1.increment()
-        gCounter2.increment()
+        gCounter1.inc()
+        gCounter1.inc()
+        gCounter2.inc()
         Assertions.assertEquals(2, gCounter1.get())
         Assertions.assertEquals(1, gCounter2.get())
     }
@@ -62,9 +62,9 @@ class GCounterTest {
     fun testMergeMethodWithDifferentValues() {
         val gCounter1 = GCounter(0, 3)
         val gCounter2 = GCounter(1, 3)
-        gCounter1.increment()
-        gCounter2.increment()
-        gCounter2.increment()
+        gCounter1.inc()
+        gCounter2.inc()
+        gCounter2.inc()
         gCounter1.merge(gCounter2)
         Assertions.assertEquals(3, gCounter1.get())
     }
@@ -73,8 +73,8 @@ class GCounterTest {
     fun testMergeMethodWithSameValues() {
         val gCounter1 = GCounter(0, 3)
         val gCounter2 = GCounter(1, 3)
-        gCounter1.increment()
-        gCounter2.increment()
+        gCounter1.inc()
+        gCounter2.inc()
         gCounter1.merge(gCounter2)
         gCounter2.merge(gCounter1)
         Assertions.assertEquals(2, gCounter1.get())
@@ -84,10 +84,10 @@ class GCounterTest {
     @Test
     fun testCopyMethod() {
         val gCounter1 = GCounter(0, 3)
-        gCounter1.increment()
-        gCounter1.increment()
+        gCounter1.inc()
+        gCounter1.inc()
         val gCounter2 = gCounter1.copy()
-        gCounter2.increment()
+        gCounter2.inc()
         Assertions.assertEquals(2, gCounter1.get())
         Assertions.assertEquals(3, gCounter2.get())
     }
@@ -104,7 +104,7 @@ class GCounterTest {
                     pnCounter0.increment()
                 }
                 for (j in 0..2) {
-                    pnCounter0.decrement()
+                    pnCounter0.dec()
                 }
                 for (j in 0..2) {
                     pnCounter0.increment()
@@ -118,7 +118,7 @@ class GCounterTest {
                     pnCounter1.increment()
                 }
                 for (j in 0..2) {
-                    pnCounter1.decrement()
+                    pnCounter1.dec()
                 }
                 for (j in 0..2) {
                     pnCounter1.increment()
@@ -132,7 +132,7 @@ class GCounterTest {
                     pnCounter2.increment()
                 }
                 for (j in 0..2) {
-                    pnCounter2.decrement()
+                    pnCounter2.dec()
                 }
                 for (j in 0..2) {
                     pnCounter2.increment()

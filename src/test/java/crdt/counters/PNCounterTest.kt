@@ -34,9 +34,9 @@ class PNCounterTest {
     @Test
     fun testDecrement() {
         val counter = PNCounter(0, 1)
-        counter.decrement()
+        counter.dec()
         Assertions.assertEquals(-1, counter.get())
-        counter.decrement()
+        counter.dec()
         Assertions.assertEquals(-2, counter.get())
     }
 
@@ -45,7 +45,7 @@ class PNCounterTest {
         val counter = PNCounter(0, 1)
         counter.increment()
         counter.increment()
-        counter.decrement()
+        counter.dec()
         Assertions.assertEquals(1, counter.get())
     }
 
@@ -64,7 +64,7 @@ class PNCounterTest {
         val counter2 = PNCounter(1, 2)
         counter1.increment()
         counter1.increment()
-        counter2.decrement()
+        counter2.dec()
         counter1.merge(counter2)
         Assertions.assertEquals(1, counter1.get())
     }

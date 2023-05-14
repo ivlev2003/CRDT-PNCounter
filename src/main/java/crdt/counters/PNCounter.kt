@@ -13,7 +13,7 @@ class PNCounter(private var serverId: Int, private var numberOfServers: Int) : S
      * Increment counter
      */
     fun increment() {
-        inc.increment()
+        inc.inc()
     }
 
     /**
@@ -24,8 +24,8 @@ class PNCounter(private var serverId: Int, private var numberOfServers: Int) : S
     /**
      * Decrement counter
      */
-    fun decrement() {
-        dec.increment()
+    fun dec() {
+        dec.inc()
     }
 
     /**

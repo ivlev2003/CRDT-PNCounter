@@ -1,7 +1,7 @@
 package crdt.counters
 
 import java.io.Serializable
-import crdt.counters.PNCounter
+
 /**
  * Grow only counter. Can only be incremented
  */
@@ -26,7 +26,7 @@ class GCounter(serverId: Int, numberOfServers: Int) : Serializable {
     /**
      * Increment a given key
      */
-    fun increment() {
+    fun inc() {
         servers[serverId] = servers[serverId] + 1
     }
 
