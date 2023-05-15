@@ -26,13 +26,13 @@ dependencies {
     implementation 'com.github.ivlev2003:CRDT-PNCounter:1.0.0'
 }
 ```
-Then, you can create a new PNCounter object and use the inc() and dec() methods to modify the counter:
+Then, you can create a new PNCounter object and use the increment() and dec() methods to modify the counter:
 ```kotlin
 // Create a new PNCounter with a unique ID
 val counter1 = PNCounter(0, 1)
 
 // Increment the counter by 3
-counter1.inc(3)
+counter1.increment(3)
 
 // Decrement the counter by 2
 counter1.dec(2)
@@ -49,10 +49,10 @@ val counter1 = PNCounter(0, 2)
 val counter2 = PNCounter(1, 2)
 
 // Increment counter1 by 2
-counter1.inc(2)
+counter1.increment(2)
 
 // Increment counter2 by 3
-counter2.inc(3)
+counter2.increment(3)
 
 // Merge counter2 into counter1
 counter1.merge(counter2)
