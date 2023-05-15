@@ -82,5 +82,59 @@ class PNCounterTest {
 
     @Test
     fun testConcurency() {
+        val pnCounter0 = PNCounter(0, 3)
+        val pnCounter1 = PNCounter(1, 3)
+        val pnCounter2 = PNCounter(2, 3)
+        val t1 = Thread {
+            for (i in 0..99) {
+                for (j in 0..2) {
+                    pnCounter0.increment()
+                }
+                for (j in 0..2) {
+                    pnCounter0.dec()
+                }
+                for (j in 0..2) {
+                    pnCounter0.increment()
+                }
+                pnCounter0.merge(pnCounter1)
+            }
+        }
+        val t2 = Thread {
+            for (i in 0..99) {
+                for (j in 0..2) {
+                    pnCounter1.increment()
+                }
+                for (j in 0..2) {
+                    pnCounter1.dec()
+                }
+                for (j in 0..2) {
+                    pnCounter1.increment()
+                }
+                pnCounter1.merge(pnCounter2)
+            }
+        }
+        val t3 = Thread {
+            for (i in 0..99) {
+                for (j in 0..2) {
+                    pnCounter2.increment()
+                }
+                for (j in 0..2) {
+                    pnCounter2.dec()
+                }
+                for (j in 0..2) {
+                    pnCounter2.increment()
+                }
+                pnCounter2.merge(pnCounter0)
+            }
+        }
+        t1.start()
+        t2.start()
+        t3.start()
+        t1.join()
+        t2.join()
+        t3.join()
+        pnCounter0.merge(pnCounter1)
+        pnCounter0.merge(pnCounter2)
+        Assertions.assertEquals(900, pnCounter0.get())
     }
 }

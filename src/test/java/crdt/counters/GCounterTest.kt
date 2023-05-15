@@ -95,49 +95,31 @@ class GCounterTest {
     @Test
     @Throws(InterruptedException::class)
     fun testConcurrency() {
-        val pnCounter0 = PNCounter(0, 3)
-        val pnCounter1 = PNCounter(1, 3)
-        val pnCounter2 = PNCounter(2, 3)
+        val gCounter0 = GCounter(0, 3)
+        val gCounter1 = GCounter(1, 3)
+        val gCounter2 = GCounter(2, 3)
         val t1 = Thread {
             for (i in 0..99) {
-                for (j in 0..2) {
-                    pnCounter0.increment()
+                for(j in 0..10) {
+                    gCounter0.inc()
                 }
-                for (j in 0..2) {
-                    pnCounter0.dec()
-                }
-                for (j in 0..2) {
-                    pnCounter0.increment()
-                }
-                pnCounter0.merge(pnCounter1)
+                gCounter0.merge(gCounter1)
             }
         }
         val t2 = Thread {
             for (i in 0..99) {
-                for (j in 0..2) {
-                    pnCounter1.increment()
+                for (j in 0..10) {
+                    gCounter1.inc()
                 }
-                for (j in 0..2) {
-                    pnCounter1.dec()
-                }
-                for (j in 0..2) {
-                    pnCounter1.increment()
-                }
-                pnCounter1.merge(pnCounter2)
+                gCounter1.merge(gCounter2)
             }
         }
         val t3 = Thread {
             for (i in 0..99) {
-                for (j in 0..2) {
-                    pnCounter2.increment()
+                for (j in 0..10) {
+                    gCounter2.inc()
                 }
-                for (j in 0..2) {
-                    pnCounter2.dec()
-                }
-                for (j in 0..2) {
-                    pnCounter2.increment()
-                }
-                pnCounter2.merge(pnCounter0)
+                gCounter2.merge(gCounter0)
             }
         }
         t1.start()
@@ -146,8 +128,8 @@ class GCounterTest {
         t1.join()
         t2.join()
         t3.join()
-        pnCounter0.merge(pnCounter1)
-        pnCounter0.merge(pnCounter2)
-        Assertions.assertEquals(900, pnCounter0.get())
+        gCounter0.merge(gCounter1)
+        gCounter0.merge(gCounter2)
+        Assertions.assertEquals(3300, gCounter0.get())
     }
 }
